@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form th:action="@{/login}" method="post">
+        <div>
+            <label>Email:</label>
+            <input type="email" name="username" required/>  <!-- Spring Security는 username 필드를 요구함 -->
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" name="password" required/>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>

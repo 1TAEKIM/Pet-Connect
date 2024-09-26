@@ -27,7 +27,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'  // JPA
-	implementation 'mysql:mysql-connector-java'  // MySQL 드라이버 (AWS RDS용)
+	implementation 'mysql:mysql-connector-java:8.0.33'  // MySQL 드라이버 (AWS RDS용)
   implementation 'org.springframework.boot:spring-boot-starter-security'  // Spring Security
   
 	compileOnly 'org.projectlombok:lombok'
@@ -35,9 +35,16 @@ dependencies {
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+    }
 }

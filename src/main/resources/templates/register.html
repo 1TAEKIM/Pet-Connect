@@ -1,28 +1,66 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Register</h1>
-    <form th:action="@{/register}" th:object="${user}" method="post">
-        <div>
-            <label>Name:</label>
-            <input type="text" th:field="*{name}" required/>
+
+    <!-- Navigation Bar (Same as Animal Details Page) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="http://k8s-petconnectgroup-cb3ee8764e-279873253.ap-northeast-2.elb.amazonaws.com">
+                <img src="https://pet-connect-repo.s3.ap-northeast-2.amazonaws.com/pet_connect_logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">로그인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/register}">회원가입</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary" th:href="@{/missing-pet-registration}">실종 펫 등록</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div>
-            <label>Nickname:</label>
-            <input type="text" th:field="*{nickname}" />
-        </div>
-        <div>
-            <label>Password:</label>
-            <input type="password" th:field="*{pw}" required/>
-        </div>
-        <div>
-            <label>Email:</label>
-            <input type="email" th:field="*{email}" required/>
-        </div>
-        <button type="submit">Register</button>
-    </form>
+    </nav>
+
+    <!-- Registration Form -->
+    <div class="container mt-5">
+        <h1>회원가입</h1>
+        <form th:action="@{/register}" th:object="${user}" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" th:field="*{name}" class="form-control" id="name" required/>
+            </div>
+            <div class="form-group">
+                <label for="nickname">Nickname:</label>
+                <input type="text" th:field="*{nickname}" class="form-control" id="nickname"/>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" th:field="*{email}" class="form-control" id="email" required/>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" th:field="*{pw}" class="form-control" id="password" required/>
+            </div>
+            <button type="submit" class="btn btn-primary">완료</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

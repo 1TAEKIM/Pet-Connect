@@ -1,20 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Login</h1>
-    <form th:action="@{/login}" method="post">
-        <div>
-            <label>Email:</label>
-            <input type="email" name="username" required/>  <!-- Spring Security는 username 필드를 요구함 -->
+
+    <!-- Navigation Bar (Same as Registration Page) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="http://k8s-petconnectgroup-cb3ee8764e-279873253.ap-northeast-2.elb.amazonaws.com">
+                <img src="https://pet-connect-repo.s3.ap-northeast-2.amazonaws.com/pet_connect_logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">로그인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/register}">회원가입</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary" th:href="@{/missing-pet-registration}">실종 펫 등록</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div>
-            <label>Password:</label>
-            <input type="password" name="password" required/>
-        </div>
-        <button type="submit">Login</button>
-    </form>
+    </nav>
+
+    <!-- Login Form -->
+    <div class="container mt-5">
+        <h1>로그인</h1>
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="username" class="form-control" id="email" required/>  <!-- Spring Security requires 'username' field -->
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="form-control" id="password" required/>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
